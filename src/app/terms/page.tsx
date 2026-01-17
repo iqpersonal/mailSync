@@ -1,4 +1,4 @@
-﻿export default function TermsOfService() {
+export default function TermsOfService() {
   return (
     <div className="min-h-screen bg-gray-900 text-white p-8 max-w-4xl mx-auto">
       <h1 className="text-3xl font-bold mb-6">Terms of Service</h1>
@@ -76,7 +76,7 @@
       <section className="mb-8">
         <h2 className="text-xl font-semibold mb-3">9. Contact</h2>
         <p className="text-gray-300">
-          For questions about these terms, contact us at: your-email@example.com
+          For questions about these terms, contact us at: info@ezy4me.com
         </p>
       </section>
     </div>

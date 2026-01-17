@@ -1,4 +1,4 @@
-﻿export default function PrivacyPolicy() {
+export default function PrivacyPolicy() {
   return (
     <div className="min-h-screen bg-gray-900 text-white p-8 max-w-4xl mx-auto">
       <h1 className="text-3xl font-bold mb-6">Privacy Policy</h1>
@@ -50,7 +50,7 @@
         <p className="text-gray-300">
           You can disconnect your Gmail account at any time using the /disconnect command in the bot.
           This will revoke our access to your Gmail and delete your stored tokens.
-          To request complete data deletion, contact us at your-email@example.com.
+          To request complete data deletion, contact us at info@ezy4me.com.
         </p>
       </section>
 
@@ -68,7 +68,7 @@
       <section className="mb-8">
         <h2 className="text-xl font-semibold mb-3">7. Contact</h2>
         <p className="text-gray-300">
-          For questions about this privacy policy, contact us at: your-email@example.com
+          For questions about this privacy policy, contact us at: info@ezy4me.com
         </p>
       </section>
     </div>
