@@ -1,84 +1,131 @@
+﻿import Link from 'next/link';
+import { Mail, ArrowLeft } from 'lucide-react';
+
 export default function TermsOfService() {
   return (
-    <div className="min-h-screen bg-gray-900 text-white p-8 max-w-4xl mx-auto">
-      <h1 className="text-3xl font-bold mb-6">Terms of Service</h1>
-      <p className="text-gray-400 mb-4">Last updated: January 17, 2026</p>
-      
-      <section className="mb-8">
-        <h2 className="text-xl font-semibold mb-3">1. Acceptance of Terms</h2>
-        <p className="text-gray-300">
-          By using MailSync Bot, you agree to these Terms of Service. If you do not agree, 
-          please do not use the service.
-        </p>
-      </section>
+    <div className="min-h-screen bg-slate-950">
+      {/* Navigation */}
+      <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-4">
+        <div className="max-w-4xl mx-auto">
+          <div className="backdrop-blur-xl bg-slate-900/80 border border-slate-800 rounded-2xl px-6 py-4">
+            <div className="flex items-center justify-between">
+              <Link href="/" className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500 to-violet-600 flex items-center justify-center">
+                  <Mail className="w-6 h-6 text-white" />
+                </div>
+                <span className="text-2xl font-bold text-white">MailSync</span>
+              </Link>
+              <Link href="/" className="flex items-center gap-2 text-slate-300 hover:text-white transition-colors">
+                <ArrowLeft className="w-4 h-4" />
+                Back to Home
+              </Link>
+            </div>
+          </div>
+        </div>
+      </nav>
 
-      <section className="mb-8">
-        <h2 className="text-xl font-semibold mb-3">2. Description of Service</h2>
-        <p className="text-gray-300">
-          MailSync Bot is a Telegram bot that connects to your Gmail account to provide 
-          AI-powered email summaries, notifications, and reply capabilities.
-        </p>
-      </section>
+      {/* Content */}
+      <div className="pt-32 pb-20 px-6">
+        <div className="max-w-4xl mx-auto">
+          <div className="backdrop-blur-xl bg-slate-900/50 border border-slate-800 rounded-3xl p-8 md:p-12">
+            <h1 className="text-4xl font-bold text-white mb-2">Terms of Service</h1>
+            <p className="text-slate-400 mb-8">Last updated: January 17, 2026</p>
+            
+            <div className="space-y-8 text-slate-300">
+              <section>
+                <h2 className="text-xl font-semibold text-white mb-4">1. Acceptance of Terms</h2>
+                <p className="text-slate-400">
+                  By using the MailSync Bot, you agree to these terms. If you do not agree, please do not use our service.
+                </p>
+              </section>
 
-      <section className="mb-8">
-        <h2 className="text-xl font-semibold mb-3">3. User Responsibilities</h2>
-        <p className="text-gray-300">You agree to:</p>
-        <ul className="list-disc list-inside text-gray-300 space-y-1">
-          <li>Provide accurate information</li>
-          <li>Keep your account credentials secure</li>
-          <li>Use the service in compliance with all applicable laws</li>
-          <li>Not use the service for spam or malicious purposes</li>
-        </ul>
-      </section>
+              <section>
+                <h2 className="text-xl font-semibold text-white mb-4">2. Service Description</h2>
+                <p className="text-slate-400">
+                  MailSync Bot is a Telegram bot that connects to your Gmail account to provide AI-generated 
+                  summaries of your emails and enable quick replies through the Telegram interface.
+                </p>
+              </section>
 
-      <section className="mb-8">
-        <h2 className="text-xl font-semibold mb-3">4. Gmail Access</h2>
-        <p className="text-gray-300">
-          By connecting your Gmail account, you authorize MailSync Bot to read your emails, 
-          send emails on your behalf (when you use the reply feature), and modify email labels.
-          You can revoke this access at any time.
-        </p>
-      </section>
+              <section>
+                <h2 className="text-xl font-semibold text-white mb-4">3. User Responsibilities</h2>
+                <p className="mb-3">You agree to:</p>
+                <ul className="list-disc list-inside space-y-2 text-slate-400">
+                  <li>Provide accurate information when connecting your accounts</li>
+                  <li>Keep your Telegram account secure</li>
+                  <li>Not use the service for spam or malicious purposes</li>
+                  <li>Comply with Gmail's terms of service</li>
+                </ul>
+              </section>
 
-      <section className="mb-8">
-        <h2 className="text-xl font-semibold mb-3">5. AI-Generated Content</h2>
-        <p className="text-gray-300">
-          Email summaries and suggested replies are generated by AI and may not always be accurate.
-          You are responsible for reviewing any content before sending replies.
-        </p>
-      </section>
+              <section>
+                <h2 className="text-xl font-semibold text-white mb-4">4. Gmail Access</h2>
+                <p className="text-slate-400">
+                  By connecting your Gmail account, you authorize us to access your emails for the purpose 
+                  of generating summaries and sending replies on your behalf. You can revoke this access at any time.
+                </p>
+              </section>
 
-      <section className="mb-8">
-        <h2 className="text-xl font-semibold mb-3">6. Limitation of Liability</h2>
-        <p className="text-gray-300">
-          MailSync Bot is provided "as is" without warranties. We are not liable for any 
-          damages arising from your use of the service, including but not limited to 
-          missed emails, incorrect summaries, or unauthorized access.
-        </p>
-      </section>
+              <section>
+                <h2 className="text-xl font-semibold text-white mb-4">5. Limitations</h2>
+                <ul className="list-disc list-inside space-y-2 text-slate-400">
+                  <li>AI-generated summaries may not be 100% accurate</li>
+                  <li>Service may experience downtime for maintenance</li>
+                  <li>Free tier users have limited daily email processing quota</li>
+                </ul>
+              </section>
 
-      <section className="mb-8">
-        <h2 className="text-xl font-semibold mb-3">7. Termination</h2>
-        <p className="text-gray-300">
-          We reserve the right to terminate or suspend your access to the service at any time,
-          for any reason, without prior notice.
-        </p>
-      </section>
+              <section>
+                <h2 className="text-xl font-semibold text-white mb-4">6. Disclaimer</h2>
+                <p className="text-slate-400">
+                  The service is provided "as is" without warranties. We are not responsible for any 
+                  missed emails, incorrect summaries, or actions taken based on AI-generated content.
+                </p>
+              </section>
 
-      <section className="mb-8">
-        <h2 className="text-xl font-semibold mb-3">8. Changes to Terms</h2>
-        <p className="text-gray-300">
-          We may update these terms at any time. Continued use of the service after changes 
-          constitutes acceptance of the new terms.
-        </p>
-      </section>
+              <section>
+                <h2 className="text-xl font-semibold text-white mb-4">7. Termination</h2>
+                <p className="text-slate-400">
+                  We reserve the right to terminate accounts that violate these terms or abuse the service.
+                  You may disconnect your account at any time using the /disconnect command.
+                </p>
+              </section>
 
-      <section className="mb-8">
-        <h2 className="text-xl font-semibold mb-3">9. Contact</h2>
-        <p className="text-gray-300">
-          For questions about these terms, contact us at: info@ezy4me.com
-        </p>
-      </section>
+              <section>
+                <h2 className="text-xl font-semibold text-white mb-4">8. Changes to Terms</h2>
+                <p className="text-slate-400">
+                  We may update these terms. Continued use of the service after changes constitutes acceptance.
+                </p>
+              </section>
+
+              <section>
+                <h2 className="text-xl font-semibold text-white mb-4">9. Contact</h2>
+                <p className="text-slate-400">
+                  For questions about these terms, contact us at: <a href="mailto:info@ezy4me.com" className="text-cyan-400 hover:underline">info@ezy4me.com</a>
+                </p>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Footer */}
+      <footer className="border-t border-slate-800 py-8 px-6">
+        <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-500 to-violet-600 flex items-center justify-center">
+              <Mail className="w-4 h-4 text-white" />
+            </div>
+            <span className="text-lg font-bold text-white">MailSync</span>
+          </div>
+          <div className="flex items-center gap-6 text-sm text-slate-400">
+            <Link href="/privacy" className="hover:text-white transition-colors">Privacy</Link>
+            <Link href="/terms" className="hover:text-white transition-colors">Terms</Link>
+            <a href="https://t.me/Maisync_bot" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Telegram</a>
+          </div>
+          <p className="text-sm text-slate-500"> 2026 MailSync. All rights reserved.</p>
+        </div>
+      </footer>
     </div>
   );
 }
