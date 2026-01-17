@@ -3,6 +3,8 @@
 import { motion } from 'framer-motion';
 import { Check, Zap } from 'lucide-react';
 
+const TELEGRAM_BOT_URL = 'https://t.me/Maisync_bot';
+
 const plans = [
   {
     name: 'Free',
@@ -54,7 +56,7 @@ const plans = [
 
 export default function Pricing() {
   return (
-    <section className="relative py-24 px-6 overflow-hidden bg-slate-950">
+    <section id="pricing" className="relative py-24 px-6 overflow-hidden bg-slate-950">
       {/* Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl" />
@@ -125,15 +127,18 @@ export default function Pricing() {
                   </div>
 
                   {/* CTA Button */}
-                  <button
-                    className={`w-full py-3 px-6 rounded-xl font-semibold transition-all duration-300 mb-8 ${
+                  <a
+                    href={TELEGRAM_BOT_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`block w-full py-3 px-6 rounded-xl font-semibold transition-all duration-300 mb-8 text-center ${
                       plan.popular
                         ? 'bg-gradient-to-r from-cyan-500 to-violet-600 text-white shadow-lg shadow-violet-500/30 hover:shadow-xl hover:shadow-cyan-500/30 hover:scale-105'
                         : 'bg-slate-800 text-white hover:bg-slate-700'
                     }`}
                   >
                     {plan.cta}
-                  </button>
+                  </a>
 
                   {/* Features */}
                   <ul className="space-y-4">

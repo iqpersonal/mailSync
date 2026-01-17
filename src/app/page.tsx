@@ -2,6 +2,7 @@
 import HeroSection from '@/components/landing/HeroSection';
 import Features from '@/components/landing/Features';
 import Pricing from '@/components/landing/Pricing';
+import Footer from '@/components/landing/Footer';
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
       <HeroSection />
       <Features />
       <Pricing />
+      <Footer />
     </main>
   );
 }

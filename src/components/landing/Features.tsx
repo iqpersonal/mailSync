@@ -39,7 +39,7 @@ const features = [
 
 export default function Features() {
   return (
-    <section className="relative py-24 px-6 bg-slate-950">
+    <section id="features" className="relative py-24 px-6 bg-slate-950">
       {/* Background Grid */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-20" />
 

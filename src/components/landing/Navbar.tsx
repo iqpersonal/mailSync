@@ -1,11 +1,15 @@
 ﻿'use client';
 
-import { motion } from 'framer-motion';
-import { Mail } from 'lucide-react';
+import { useState } from 'react';
+import Link from 'next/link';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Mail, Menu, X } from 'lucide-react';
 
 const TELEGRAM_BOT_URL = 'https://t.me/Maisync_bot';
 
 export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <motion.nav
       initial={{ y: -100 }}
@@ -17,14 +21,14 @@ export default function Navbar() {
         <div className="relative backdrop-blur-xl bg-slate-900/80 border border-slate-800 rounded-2xl px-6 py-4">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <div className="flex items-center gap-3">
+            <Link href="/" className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500 to-violet-600 flex items-center justify-center">
                 <Mail className="w-6 h-6 text-white" />
               </div>
               <span className="text-2xl font-bold text-white">MailSync</span>
-            </div>
+            </Link>
 
-            {/* Nav Links */}
+            {/* Desktop Nav Links */}
             <div className="hidden md:flex items-center gap-8">
               <a href="#features" className="text-slate-300 hover:text-white transition-colors">
                 Features
@@ -32,18 +36,18 @@ export default function Navbar() {
               <a href="#pricing" className="text-slate-300 hover:text-white transition-colors">
                 Pricing
               </a>
-              <a href="/privacy" className="text-slate-300 hover:text-white transition-colors">
+              <Link href="/privacy" className="text-slate-300 hover:text-white transition-colors">
                 Privacy
-              </a>
+              </Link>
             </div>
 
-            {/* CTA Buttons */}
-            <div className="flex items-center gap-4">
+            {/* Desktop CTA Buttons */}
+            <div className="hidden md:flex items-center gap-4">
               <a 
                 href={TELEGRAM_BOT_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hidden sm:block px-6 py-2 text-white hover:text-cyan-400 transition-colors"
+                className="px-6 py-2 text-white hover:text-cyan-400 transition-colors"
               >
                 Open in Telegram
               </a>
@@ -56,7 +60,67 @@ export default function Navbar() {
                 Get Started
               </a>
             </div>
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="md:hidden w-10 h-10 flex items-center justify-center text-white"
+            >
+              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
           </div>
+
+          {/* Mobile Menu */}
+          <AnimatePresence>
+            {isOpen && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.3 }}
+                className="md:hidden overflow-hidden"
+              >
+                <div className="pt-6 pb-2 border-t border-slate-700 mt-4 flex flex-col gap-4">
+                  <a 
+                    href="#features" 
+                    onClick={() => setIsOpen(false)}
+                    className="text-slate-300 hover:text-white transition-colors py-2"
+                  >
+                    Features
+                  </a>
+                  <a 
+                    href="#pricing" 
+                    onClick={() => setIsOpen(false)}
+                    className="text-slate-300 hover:text-white transition-colors py-2"
+                  >
+                    Pricing
+                  </a>
+                  <Link 
+                    href="/privacy" 
+                    onClick={() => setIsOpen(false)}
+                    className="text-slate-300 hover:text-white transition-colors py-2"
+                  >
+                    Privacy
+                  </Link>
+                  <Link 
+                    href="/terms" 
+                    onClick={() => setIsOpen(false)}
+                    className="text-slate-300 hover:text-white transition-colors py-2"
+                  >
+                    Terms
+                  </Link>
+                  <a 
+                    href={TELEGRAM_BOT_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-2 px-6 py-3 bg-gradient-to-r from-cyan-500 to-violet-600 rounded-xl font-semibold text-white text-center hover:shadow-lg hover:shadow-cyan-500/50 transition-all"
+                  >
+                    Get Started
+                  </a>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
     </motion.nav>
