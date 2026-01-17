@@ -26,29 +26,6 @@ async function deleteEmailContext(chatId: number, emailId: string) {
 }
 
 bot.command("start", async (ctx: BotContext) => {
-  const chatId = ctx.chat?.id;
-  const userName = ctx.from?.first_name || "User";
-  
-  // Create or update user record if they don't exist
-  if (chatId) {
-    const usersSnapshot = await db.collection("users")
-      .where("telegramChatId", "==", chatId)
-      .limit(1)
-      .get();
-    
-    if (usersSnapshot.empty) {
-      await db.collection("users").add({
-        telegramChatId: chatId,
-        userName,
-        email: null,
-        subscriptionStatus: "free",
-        createdAt: new Date(),
-        updatedAt: new Date(),
-        emailQuota: { limit: 50, used: 0, resetAt: new Date() },
-      });
-    }
-  }
-  
   await ctx.reply(
     " *Welcome to MailSync!*\n\n" +
       "I'm your AI-powered email assistant. I'll help you manage your emails directly from Telegram.\n\n" +
@@ -797,37 +774,20 @@ bot.on("callback_query", async (ctx: BotContext) => {
 
 
 // Dashboard command - opens user dashboard
-bot.command("dashboard", async (ctx: BotContext) => {
+bot.command("dashboard", async (ctx) => {
   const chatId = ctx.from?.id;
   if (!chatId) {
     await ctx.reply("Unable to retrieve your ID. Please try again.");
     return;
   }
-  const dashboardUrl = "https://ezy4me.com/dashboard?tid=" + chatId;
+  
+  const dashboardUrl = https://ezy4me.com/dashboard?tid=$chatId;
   await ctx.reply(" Opening your dashboard...", {
     reply_markup: {
       inline_keyboard: [[{ text: " Open Dashboard", url: dashboardUrl }]]
     }
   });
 });
-
-// Help command - list all available commands  
-bot.command("help", async (ctx: BotContext) => {
-  await ctx.reply(
-    "*Available Commands:*\n\n" +
-    "/connect - Link your Gmail account\n" +
-    "/status - Check your account status\n" +
-    "/check - Check new emails\n" +
-    "/search [query] - Search your emails\n" +
-    "/watch - Enable real-time notifications\n" +
-    "/unwatch - Disable real-time notifications\n" +
-    "/dashboard - Open your dashboard\n" +
-    "/unlink - Disconnect your Gmail account\n" +
-    "/help - Show this message",
-    { parse_mode: "Markdown" }
-  );
-});
 // Export helper function for use in index.ts (Pub/Sub handler)
 export { storeEmailContext };
-
 
