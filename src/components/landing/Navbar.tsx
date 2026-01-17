@@ -3,6 +3,8 @@
 import { motion } from 'framer-motion';
 import { Mail } from 'lucide-react';
 
+const TELEGRAM_BOT_URL = 'https://t.me/Maisync_bot';
+
 export default function Navbar() {
   return (
     <motion.nav
@@ -30,19 +32,29 @@ export default function Navbar() {
               <a href="#pricing" className="text-slate-300 hover:text-white transition-colors">
                 Pricing
               </a>
-              <a href="#docs" className="text-slate-300 hover:text-white transition-colors">
-                Docs
+              <a href="/privacy" className="text-slate-300 hover:text-white transition-colors">
+                Privacy
               </a>
             </div>
 
             {/* CTA Buttons */}
             <div className="flex items-center gap-4">
-              <button className="hidden sm:block px-6 py-2 text-white hover:text-cyan-400 transition-colors">
-                Sign In
-              </button>
-              <button className="px-6 py-2 bg-gradient-to-r from-cyan-500 to-violet-600 rounded-xl font-semibold text-white hover:shadow-lg hover:shadow-cyan-500/50 transition-all">
+              <a 
+                href={TELEGRAM_BOT_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hidden sm:block px-6 py-2 text-white hover:text-cyan-400 transition-colors"
+              >
+                Open in Telegram
+              </a>
+              <a 
+                href={TELEGRAM_BOT_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-2 bg-gradient-to-r from-cyan-500 to-violet-600 rounded-xl font-semibold text-white hover:shadow-lg hover:shadow-cyan-500/50 transition-all"
+              >
                 Get Started
-              </button>
+              </a>
             </div>
           </div>
         </div>
