@@ -1,6 +1,6 @@
 ﻿'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
@@ -28,7 +28,7 @@ interface Integration {
   isActive: boolean;
 }
 
-export default function UserDashboard() {
+function DashboardContent() {
   const searchParams = useSearchParams();
   const telegramId = searchParams.get('tid');
   
@@ -284,6 +284,18 @@ export default function UserDashboard() {
         </motion.div>
       </main>
     </div>
+  );
+}
+
+export default function DashboardPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-slate-950 flex items-center justify-center">
+        <div className="animate-spin w-8 h-8 border-2 border-cyan-500 border-t-transparent rounded-full" />
+      </div>
+    }>
+      <DashboardContent />
+    </Suspense>
   );
 }
 

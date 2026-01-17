@@ -1,5 +1,7 @@
 ﻿'use client';
 
+export const dynamic = 'force-dynamic';
+
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { 
@@ -59,7 +61,6 @@ export default function AdminDashboard() {
   const fetchData = async () => {
     setLoading(true);
     try {
-      // Fetch from API route
       const res = await fetch('/api/admin/stats');
       if (res.ok) {
         const data = await res.json();
